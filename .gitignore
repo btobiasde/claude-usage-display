@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+
+# User-local config (contains LAN IP of your device)
+config.py
+
+# Generated screens
+out/
+docs/screenshots/*.gif
+
+# Delta-tracking state (persists usage values between renders)
+.state/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
