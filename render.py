@@ -67,7 +67,6 @@ def render_all(out_dir: Path) -> list[Path]:
         claude_info.render_gif(
             out_dir / "claude.gif",
             model="OPUS 4.7",
-            context="1M CONTEXT",
         )
     )
 

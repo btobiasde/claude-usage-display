@@ -34,7 +34,7 @@ required.**
 | ![Session](docs/screenshots/session.gif) | **SESSION** — your 5-hour usage block percentage. The end-cap of the bar pulses gently. When the value changes between refreshes, a `+N` chip appears next to the label. |
 | ![7-Day](docs/screenshots/weekly.gif) | **7-DAY** — weekly limit across all models. Reset time shows weekday + clock (`DO 18:00`). Same delta-badge behavior as session. |
 | ![All Time](docs/screenshots/alltime.gif) | **ALL-TIME** — cumulative cost, total tokens, weeks active, daily average. The token line subtly shimmers between `ACCENT_DIM` and `ACCENT_BRIGHT` on an eased breath cycle. |
-| ![Claude](docs/screenshots/claude.gif) | **CLAUDE** — your plan tier (read from credentials), model, and context window. The 12 spokes ripple around the ring with phase offsets, creating a soft wave instead of a robotic uniform pulse. The halo breathes on a decoupled rhythm. |
+| ![Claude](docs/screenshots/claude.gif) | **CLAUDE** — your plan tier (read from credentials) and current model. The 12 spokes ripple around the ring with phase offsets, creating a soft wave instead of a robotic uniform pulse. The halo breathes on a decoupled rhythm. |
 
 ## Features
 

@@ -91,24 +91,20 @@ def _draw_halo(size: int, cy: int) -> Image.Image:
 
 
 def _draw_text_layer(
-    d: ImageDraw.ImageDraw, model: str, plan: str, context: str
+    d: ImageDraw.ImageDraw, model: str, plan: str
 ) -> None:
     model_font = t.font_bold(22)
     plan_font = t.font_bold(18)
-    ctx_font = t.font(12)
 
     mw = d.textlength(model, font=model_font)
-    d.text(((t.SIZE - mw) // 2, 150), model, font=model_font, fill=t.TEXT)
+    d.text(((t.SIZE - mw) // 2, 160), model, font=model_font, fill=t.TEXT)
 
     pw = d.textlength(plan, font=plan_font)
-    d.text(((t.SIZE - pw) // 2, 180), plan, font=plan_font, fill=t.ACCENT)
-
-    cw = d.textlength(context, font=ctx_font)
-    d.text(((t.SIZE - cw) // 2, 208), context, font=ctx_font, fill=t.TEXT_DIM)
+    d.text(((t.SIZE - pw) // 2, 194), plan, font=plan_font, fill=t.ACCENT)
 
 
 def _render_frame(
-    phase: float, model: str, plan: str, context: str, halo_layer: Image.Image
+    phase: float, model: str, plan: str, halo_layer: Image.Image
 ) -> Image.Image:
     halo_phase = (phase * 0.7) % 1.0
     halo_breath = t.ease_in_out(halo_phase if halo_phase < 0.5 else 1 - halo_phase) * 2
@@ -119,27 +115,26 @@ def _render_frame(
 
     d = ImageDraw.Draw(img)
     _glyph(d, t.SIZE // 2, 88, phase)
-    _draw_text_layer(d, model, plan, context)
+    _draw_text_layer(d, model, plan)
     return img
 
 
-def render(model: str = "OPUS 4.7", context: str = "1M CONTEXT") -> Image.Image:
+def render(model: str = "OPUS 4.7") -> Image.Image:
     plan = _read_plan()
     halo = _draw_halo(t.SIZE, 88)
-    return _render_frame(0.0, model, plan, context, halo)
+    return _render_frame(0.0, model, plan, halo)
 
 
 def render_gif(
     out_path: Path,
     model: str = "OPUS 4.7",
-    context: str = "1M CONTEXT",
     frames: int = 30,
     frame_ms: int = 80,
 ) -> Path:
     plan = _read_plan()
     halo = _draw_halo(t.SIZE, 88)
     imgs = [
-        _render_frame(i / frames, model, plan, context, halo).convert(
+        _render_frame(i / frames, model, plan, halo).convert(
             "P", palette=Image.Palette.ADAPTIVE, colors=64
         )
         for i in range(frames)
